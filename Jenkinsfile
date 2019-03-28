@@ -1,10 +1,12 @@
   node{
    stage('SCM Checkout'){
+     
+     def mvnHome = tool name: 'Maven Home', type: 'maven'
      git 'https://github.com/javahometech/my-app'
    }
    stage('Compile-Package'){
     
-      def mvnHome =  tool name: 'maven-3', type: 'maven'   
+      def mvnHome =  tool name: 'Maven Home', type: 'maven'   
       sh "${mvnHome}/bin/mvn package"
    }
    stage('Email Notification'){
